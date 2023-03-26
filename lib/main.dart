@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'OtpVerification.dart';
+
+Future<void> main() async {
+  await Future.delayed(const Duration(milliseconds: 500));
   runApp(const MyApp());
 }
 
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Talk  Hours'),
     );
   }
 }
@@ -48,17 +51,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final _formKey = GlobalKey<FormState>();
+  var numeroTelephone = '';
+  var checkedValue = false;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -70,46 +70,135 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   // Here we take the value from the MyHomePage object that was created by
+      //   // the App.build method, and use it to set our appbar title.
+      //   title: Text(widget.title),
+      // ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: Column(children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.7,
+            // height: MediaQuery.of(context).size.width * 1,
+            margin: const EdgeInsets.only(top: 30),
+            child: Column(children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/logo/logo 1.png'),
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25.0),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Text(
+                      'Bienvenue sur TalkHours',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Text(
+                      'Vérifier votre numéro de téléphone pour vous connectez.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal, fontSize: 15),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Row(
+                  children: const [
+                    Text(
+                      'Numero de téléphone',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
+              TextFormField(
+                onChanged: (value) {
+                  numeroTelephone = value;
+                },
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Veuillez saisir un numero de téléphone !';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CheckboxListTile(
+                title: const Text("j'accepte les conditions d'utilisation"),
+                value: checkedValue,
+                onChanged: (newValue) {
+                  setState(() {
+                    checkedValue = !checkedValue;
+                  });
+                },
+                controlAffinity:
+                    ListTileControlAffinity.leading, //  <-- leading Checkbox
+              ),
+              SizedBox(
+                  child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 50.0,
+                    margin: const EdgeInsets.only(top: 10),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _openOtp(context, numeroTelephone);
+                      },
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(8, 29, 13, 100))),
+                      child: const Text('Envoyer un code'),
+                    ),
+                  )
+                ],
+              ))
+            ]),
+          )
+        ]),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+void _openOtp(context, numero) {
+  showModalBottomSheet(
+      isScrollControlled: true,
+      context: (context),
+      builder: (BuildContext bc) {
+        return Scaffold(
+          body: Container(
+            height: MediaQuery.of(context).size.height * .80,
+            width: MediaQuery.of(context).size.width,
+            child: OtpVerificationPage(numeroTelephone: numero),
+          ),
+        );
+      });
 }
