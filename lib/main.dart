@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(children: [
           Container(
             width: MediaQuery.of(context).size.width * 0.7,
-            // height: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height,
             margin: const EdgeInsets.only(top: 30),
             child: Column(children: [
               SizedBox(
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 30,
                     ),
                     const Text(
-                      'Bienvenue sur TalkHours',
+                      'Bienvenue sur Talk Time',
                       textAlign: TextAlign.center,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -195,7 +195,7 @@ void _openOtp(context, numero) {
       builder: (BuildContext bc) {
         return Scaffold(
           body: Container(
-            height: MediaQuery.of(context).size.height * .80,
+            height: MediaQuery.of(context).size.height * .95,
             width: MediaQuery.of(context).size.width,
             child: OtpVerificationPage(numeroTelephone: numero),
           ),

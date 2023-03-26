@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:talkhours/Acceuil.dart';
 
 class OtpVerificationPage extends StatefulWidget {
   final String numeroTelephone;
@@ -53,12 +54,12 @@ class _OtpVerificationPage extends State<OtpVerificationPage> {
       body: GestureDetector(
         onTap: () {},
         child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height * 0.95,
           width: MediaQuery.of(context).size.width,
           child: ListView(
             children: [
               const SizedBox(
-                height: 40,
+                height: 60,
               ),
               Container(
                 alignment: Alignment.center,
@@ -82,11 +83,11 @@ class _OtpVerificationPage extends State<OtpVerificationPage> {
                     borderRadius: BorderRadius.circular(30),
                     child: Image.asset('assets/images/otp.gif')),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 6),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  'Verification du numero de telephone',
+                  'Verification du numero de téléphone',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   textAlign: TextAlign.center,
                 ),
@@ -129,7 +130,7 @@ class _OtpVerificationPage extends State<OtpVerificationPage> {
                       obscuringCharacter: '*',
                       animationType: AnimationType.fade,
                       validator: (v) {
-                        if (v!.length < 3) {
+                        if (v!.length < 6) {
                           return "Veuillez renseigner tout le code";
                         } else {
                           return null;
@@ -143,8 +144,8 @@ class _OtpVerificationPage extends State<OtpVerificationPage> {
                         activeFillColor: onError ? Colors.orange : Colors.white,
                       ),
                       cursorColor: Colors.black,
-                      animationDuration: Duration(milliseconds: 300),
-                      textStyle: TextStyle(fontSize: 20, height: 1.6),
+                      animationDuration: const Duration(milliseconds: 300),
+                      textStyle: const TextStyle(fontSize: 20, height: 1.6),
                       backgroundColor: Colors.blue.shade50,
                       enableActiveFill: true,
                       errorAnimationController: errorController,
@@ -159,6 +160,14 @@ class _OtpVerificationPage extends State<OtpVerificationPage> {
                       ],
                       onCompleted: (v) {
                         print("Complet");
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const AcceuilPage(
+                                      numeroTelephone: '',
+                                    )),
+                            (Route<dynamic> route) => false);
                       },
                       // onTap: () {
                       //   print("Pressed");
@@ -184,7 +193,7 @@ class _OtpVerificationPage extends State<OtpVerificationPage> {
                       ? "*Veuillez remplir correctement tous les champs"
                       : "",
                   style: const TextStyle(
-                      color: Colors.red,
+                      color: Colors.white10,
                       fontSize: 12,
                       fontWeight: FontWeight.w400),
                 ),
