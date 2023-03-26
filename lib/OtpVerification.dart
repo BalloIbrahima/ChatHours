@@ -1,21 +1,20 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:talkhours/Acceuil.dart';
 
-class OtpVerificationPage extends StatefulWidget {
+class otpVerificationPage extends StatefulWidget {
   final String numeroTelephone;
-  const OtpVerificationPage({super.key, required this.numeroTelephone});
+  const otpVerificationPage({super.key, required this.numeroTelephone});
 
   @override
-  State<StatefulWidget> createState() => _OtpVerificationPage();
+  State<StatefulWidget> createState() => _0tpVerificationPage();
 }
 
-class _OtpVerificationPage extends State<OtpVerificationPage> {
+class _0tpVerificationPage extends State<otpVerificationPage> {
   //
   TextEditingController textEditingController = TextEditingController();
 

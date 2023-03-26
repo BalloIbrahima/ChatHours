@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'OtpVerification.dart';
+import 'otpVerification.dart';
 
 Future<void> main() async {
   await Future.delayed(const Duration(milliseconds: 500));
@@ -195,9 +195,9 @@ void _openOtp(context, numero) {
       builder: (BuildContext bc) {
         return Scaffold(
           body: Container(
-            height: MediaQuery.of(context).size.height * .95,
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            child: OtpVerificationPage(numeroTelephone: numero),
+            child: otpVerificationPage(numeroTelephone: numero),
           ),
         );
       });

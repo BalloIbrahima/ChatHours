@@ -1,9 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class AcceuilPage extends StatefulWidget {
@@ -11,10 +8,10 @@ class AcceuilPage extends StatefulWidget {
   const AcceuilPage({super.key, required this.numeroTelephone});
 
   @override
-  State<StatefulWidget> createState() => _AcceuilPage();
+  State<StatefulWidget> createState() => _acceuilPage();
 }
 
-class _AcceuilPage extends State<AcceuilPage> {
+class _acceuilPage extends State<AcceuilPage> {
   //
   TextEditingController textEditingController = TextEditingController();
 
