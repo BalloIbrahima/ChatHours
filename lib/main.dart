@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(children: [
           Container(
             width: MediaQuery.of(context).size.width * 0.7,
-            height: MediaQuery.of(context).size.height,
+            // height: MediaQuery.of(context).size.height,
             margin: const EdgeInsets.only(top: 30),
             child: Column(children: [
               SizedBox(
@@ -197,7 +197,7 @@ void _openOtp(context, numero) {
           body: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            child: otpVerificationPage(numeroTelephone: numero),
+            child: OtpVerificationPage(numeroTelephone: numero),
           ),
         );
       });

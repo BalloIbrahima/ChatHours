@@ -6,15 +6,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:talkhours/Acceuil.dart';
 
-class otpVerificationPage extends StatefulWidget {
+class OtpVerificationPage extends StatefulWidget {
   final String numeroTelephone;
-  const otpVerificationPage({super.key, required this.numeroTelephone});
+  const OtpVerificationPage({super.key, required this.numeroTelephone});
 
   @override
-  State<StatefulWidget> createState() => _0tpVerificationPage();
+  State<StatefulWidget> createState() => OtpVerificationPageState();
 }
 
-class _0tpVerificationPage extends State<otpVerificationPage> {
+class OtpVerificationPageState extends State<OtpVerificationPage> {
   //
   TextEditingController textEditingController = TextEditingController();
 
@@ -96,7 +96,7 @@ class _0tpVerificationPage extends State<otpVerificationPage> {
                     const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
                 child: RichText(
                   text: TextSpan(
-                      text: "Veuillez saisir le code envoye au ",
+                      text: "Veuillez saisir le code envoyé au ",
                       children: [
                         TextSpan(
                             text: widget.numeroTelephone,
@@ -140,7 +140,7 @@ class _0tpVerificationPage extends State<otpVerificationPage> {
                         borderRadius: BorderRadius.circular(5),
                         fieldHeight: 60,
                         fieldWidth: 50,
-                        activeFillColor: onError ? Colors.orange : Colors.white,
+                        activeFillColor: onError ? Colors.orange : Colors.red,
                       ),
                       cursorColor: Colors.black,
                       animationDuration: const Duration(milliseconds: 300),

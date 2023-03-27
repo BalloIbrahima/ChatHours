@@ -8,10 +8,10 @@ class AcceuilPage extends StatefulWidget {
   const AcceuilPage({super.key, required this.numeroTelephone});
 
   @override
-  State<StatefulWidget> createState() => _acceuilPage();
+  State<StatefulWidget> createState() => AcceuilPageState();
 }
 
-class _acceuilPage extends State<AcceuilPage> {
+class AcceuilPageState extends State<AcceuilPage> {
   //
   TextEditingController textEditingController = TextEditingController();
 
@@ -22,8 +22,6 @@ class _acceuilPage extends State<AcceuilPage> {
   final formKey = GlobalKey();
 
   late StreamController<ErrorAnimationType> errorController;
-
-  var fermerModal;
 
   @override
   void initState() {
@@ -45,15 +43,95 @@ class _acceuilPage extends State<AcceuilPage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text("Talk Time"),
+        title: const Text(
+          "Talk Time",
+          textAlign: TextAlign.left,
+        ),
         automaticallyImplyLeading: false,
+        backgroundColor: const Color.fromRGBO(8, 29, 13, 100),
       ),
       body: Center(
         child: Column(children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.7,
+            width: MediaQuery.of(context).size.width * 0.95,
             // height: MediaQuery.of(context).size.width * 1,
-            margin: const EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 60,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5.0),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 55,
+                        width: 55,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/me.jpeg'),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(50.0),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'BALLO Ibrahima',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              Text(
+                                'Hello mohamed cv !',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 13),
+                              ),
+                            ]),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: const [
+                          Text(
+                            '10:34',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 10),
+                          ),
+                          Text(
+                            '',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 10),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
           )
         ]),
       ),
