@@ -33,6 +33,16 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          centerTitle: false,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: const Text(
+            "Ibrahima Ballo",
+            textAlign: TextAlign.left,
+          ),
+          backgroundColor: const Color.fromRGBO(8, 29, 13, 100),
+        ),
         body: Chat(
           messages: _messages,
           onAttachmentPressed: _handleAttachmentPressed,
