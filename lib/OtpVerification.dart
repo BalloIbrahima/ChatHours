@@ -159,6 +159,7 @@ class OtpVerificationPageState extends State<OtpVerificationPage> {
                       ],
                       onCompleted: (v) {
                         print("Complet");
+                        dispose();
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
